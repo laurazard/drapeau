@@ -1,4 +1,5 @@
 (ns laurazard.drapeau.api
+  (:gen-class)
   (:require [clojure.data.json :refer [write-str read-str]]
             [org.httpkit.server :refer [run-server server-stop!]]
             [failjure.core :refer [attempt-all when-failed]]

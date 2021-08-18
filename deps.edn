@@ -1,11 +1,17 @@
-{:paths ["src"]
+{:paths ["src" "classes"]
  :aliases {:api {:main-opts ["-m" "laurazard.drapeau.api"]}
            :test {:extra-paths ["test"]
                   :extra-deps {io.github.cognitect-labs/test-runner
                                {:git/url "https://github.com/cognitect-labs/test-runner.git"
                                 :sha "8c3f22363d63715de4087b038d79ae0de36a3263"}}
                   :main-opts ["-m" "cognitect.test-runner"]
-                  :exec-fn cognitect.test-runner.api/test}}
+                  :exec-fn cognitect.test-runner.api/test}
+           :uberdeps {:replace-deps {uberdeps/uberdeps {:mvn/version "1.0.4"}}
+                      :replace-paths []
+                      :main-opts ["-m" "uberdeps.uberjar"]
+                      :exec-args {
+                                  :main-class "laurazard.drapeau.api"
+                      }}}
  :deps {org.clojure/clojure {:mvn/version "1.10.3"}
         clojure.java-time/clojure.java-time {:mvn/version "0.3.2"}
         org.clojure/data.json {:mvn/version "2.4.0"}
